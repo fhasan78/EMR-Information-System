@@ -1,1 +1,1 @@
-# EMR-Information-System
+# Electronic Medical Records Information System
