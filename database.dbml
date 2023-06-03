@@ -1,0 +1,33 @@
+Project EMR_Information_System {
+  database_type: 'PostgreSQL'
+  Note: '''
+    # EMR Database
+    
+  '''
+}
+Table patients as P {
+  id int [pk, increment]
+  first_name varchar
+  last_name varchar
+  created_at timestamp [default: `now()`]
+  updated_at timestamp 
+  passport_num varchar
+  country_code int [note: "country patient is from"]
+  note: "table 'patients' contains patients information"
+}
+Table countries {
+  code int [pk]
+  name varchar
+  continent_name varchar
+}
+Table visits{
+    patient_id int [ref: > patients.id]
+    visit_date timestamp [default: `now()`]
+    temperature float
+    heart_rate int
+    respiratory_rate int
+    systolic_blood_pressure int
+    diastolic_blood_pressure int
+    oxygen_saturation int 
+}
+Ref: P.country_code > countries.code  
